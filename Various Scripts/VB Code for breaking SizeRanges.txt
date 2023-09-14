@@ -1,0 +1,34 @@
+'This Code Generates Rows based on size-ranges
+Sub CopyData()
+    Dim xRow As Integer
+    Dim tempRow As Integer
+    Dim VInSertNum As Variant
+    Dim VInSertNumtemp As Variant
+    Dim SizeRangeString() As String
+    xRow = 2
+    Application.ScreenUpdating = False
+    
+    Do While (Cells(xRow, "A") <> "")
+    
+        SizeRangeString = Split(Worksheets("ERP Data").Cells(xRow, 3), "-")
+        VInSertNum = UBound(SizeRangeString) - LBound(SizeRangeString) + 1
+        VInSertNumtemp = VInSertNum
+        tempRow = xRow
+        
+        If ((VInSertNumtemp > 1) And IsNumeric(VInSertNum)) Then
+            Range(Cells(xRow, "A"), Cells(xRow, "BO")).Copy
+            Range(Cells(xRow + 1, "A"), Cells(xRow + VInSertNumtemp - 1, "BO")).Select
+            Selection.Insert Shift:=xlDown
+            Do While (VInSertNumtemp > 0)
+                Cells(tempRow, "C") = SizeRangeString(VInSertNumtemp - 1)
+                VInSertNumtemp = VInSertNumtemp - 1
+                tempRow = tempRow + 1
+            Loop
+        End If
+        xRow = xRow + VInSertNum
+    Loop
+    
+    Application.ScreenUpdating = False
+End Sub
+
+
