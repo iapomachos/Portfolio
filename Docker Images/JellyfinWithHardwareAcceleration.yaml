@@ -12,5 +12,9 @@ services:
       - /dev/dri:/dev/dri
     ports:
       - 8096:8096 #web port
+    volumes:
+       - '/docker/Jellyfin/config:/config'
+       - '/docker/Jellyfin/cache:/cache'
+       - '/docker/Movies-Series:/media'
     network_mode: bridge
     restart: unless-stopped
