@@ -20,6 +20,9 @@ my_turtle.penup()
 
 
 number_of_dots=100
+my_turtle.setheading(225)
+my_turtle.forward(300)
+my_turtle.setheading(0)
 random_color()
 
 for dot_count in range(1, number_of_dots + 1):
