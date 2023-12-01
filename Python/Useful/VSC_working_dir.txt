@@ -1,0 +1,9 @@
+Visual Studio Code (at least in windows) has by default set the working directory to something else other than the python file's current path, so relative paths are not working.
+This is a working fix I found on stuck overflow:
+
+
+Source:
+https://stackoverflow.com/questions/69769139/relative-file-path-is-not-recognized-by-python-in-vscode#:~:text=A%20quick%20solution%20to%20use,%22%2C%22%2F%22).
+Comment:
+You only need to set the setting python.terminal.executeInFileDir to true.
+In Settings, search for python.terminal.executeInFileDir and mark it. That should be what you need.
